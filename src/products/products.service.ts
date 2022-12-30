@@ -7,7 +7,6 @@ import {
 } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
-import { ProductDto } from './dto/product.dto';
 import { ProviderOneClient, ProviderTwoClient } from '../utils/resources';
 
 @Injectable()
