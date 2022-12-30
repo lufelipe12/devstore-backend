@@ -15,7 +15,7 @@ export class ItemEntityDoc {
   price: number;
 
   @ApiProperty({
-    type: Enumerator,
+    type: 'enum',
     example: ProductProvider.Brazil,
   })
   provider: ProductProvider;

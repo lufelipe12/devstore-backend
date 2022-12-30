@@ -7,6 +7,7 @@ import { LoggerInterceptor } from './logger/logger.interceptor';
 import { winstonAsyncConfigOptions } from './logger/winston.config';
 import { ProductsModule } from './products/products.module';
 import { CartsModule } from './carts/carts.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { CartsModule } from './carts/carts.module';
     DatabaseModule,
     ProductsModule,
     CartsModule,
+    UsersModule,
   ],
   providers: [
     {

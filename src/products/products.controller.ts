@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { VarParsers } from '../utils';
-import { FindAllPaginatedDoc } from './docs/findAllPaginatedResponse.doc';
+import { FindAllPaginatedDoc } from '../docs';
 import { ProductsService } from './products.service';
 
 @ApiTags('products')
