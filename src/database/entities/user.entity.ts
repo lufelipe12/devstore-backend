@@ -1,6 +1,13 @@
 import { InternalServerErrorException } from '@nestjs/common';
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import * as bcrypt from 'bcryptjs';
+import { Purchase } from './purchase.entity';
 
 @Entity('users')
 export class User {
@@ -26,6 +33,9 @@ export class User {
     select: false,
   })
   password: string;
+
+  @OneToMany(() => Purchase, (purchase) => purchase.user)
+  purchases: Purchase[];
 
   @BeforeInsert()
   public async setPassword(password: string): Promise<void> {
