@@ -25,7 +25,7 @@ export class ProductsService {
     page: number,
     limit: number,
     name: string,
-    hasDiscount: string,
+    hasDiscount: boolean,
   ): Promise<FindAllPaginatedDto> {
     try {
       const clientOneProducts = await this.clientOne.getProducts();
@@ -33,12 +33,14 @@ export class ProductsService {
       let products: ProductDto[] = [...clientOneProducts, ...clientTwoProducts];
 
       if (name) {
-        products = products.filter((product) => product.name.includes(name));
+        products = products.filter((product) =>
+          product.name.toLowerCase().includes(name),
+        );
       }
 
-      if (hasDiscount) {
+      if (hasDiscount !== null) {
         products = products.filter(
-          (product) => product.hasDiscount.toString() === hasDiscount,
+          (product) => product.hasDiscount === hasDiscount,
         );
       }
 
