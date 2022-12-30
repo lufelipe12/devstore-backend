@@ -28,6 +28,13 @@
 
 ## Installation
 
+Create your own env file:
+
+```bash
+$ cp .env.example .env
+```
+and set them.
+
 ```bash
 $ npm install
 ```
