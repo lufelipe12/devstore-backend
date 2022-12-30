@@ -1,3 +1,4 @@
+import { ProductProvider } from 'src/utils/enums/product-provider.enum';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Cart } from './cart.entity';
 import { Purchase } from './purchase.entity';
@@ -13,9 +14,10 @@ export class Item {
   price: number;
 
   @Column({
-    length: 10,
+    type: 'enum',
+    enum: ProductProvider,
   })
-  provider: string;
+  provider: ProductProvider;
 
   @Column()
   hasDiscount: boolean;
