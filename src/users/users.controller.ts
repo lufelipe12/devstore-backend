@@ -6,33 +6,45 @@ import {
   Patch,
   Param,
   Delete,
-  HttpException,
+  HttpCode,
   HttpStatus,
-  Inject,
-  LoggerService,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { UserCreatedResponseDoc, UserRequestDoc } from 'src/docs';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({
+    summary: 'Create new user.',
+    description: 'Create new user.',
+  })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    type: UserCreatedResponseDoc,
+  })
+  @ApiBody({
+    type: UserRequestDoc,
+  })
   async create(@Body() createUserDto: CreateUserDto) {
     return await this.usersService.create(createUserDto);
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  async findAll() {
+    return await this.usersService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.usersService.findOne(+id);
   }
 
   @Patch(':id')
