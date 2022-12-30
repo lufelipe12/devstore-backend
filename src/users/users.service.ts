@@ -5,6 +5,7 @@ import {
   Inject,
   Injectable,
   LoggerService,
+  NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
@@ -65,8 +66,19 @@ export class UsersService {
     }
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    try {
+      const users = await this.usersRepository.find();
+
+      return users;
+    } catch (error) {
+      this.logger.error(error);
+
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   async findOne(id: number) {
@@ -75,6 +87,10 @@ export class UsersService {
         where: { id },
         relations: ['purchases', 'purchases.items'],
       });
+
+      if (!user) {
+        throw new NotFoundException('User not found.');
+      }
 
       return user;
     } catch (error) {
