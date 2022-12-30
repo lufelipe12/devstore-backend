@@ -3,6 +3,7 @@ import {
   BeforeInsert,
   Column,
   Entity,
+  Index,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -19,6 +20,7 @@ export class User {
   })
   name: string;
 
+  @Index()
   @Column({
     length: 50,
     unique: true,
@@ -29,8 +31,8 @@ export class User {
   isAdmin: boolean;
 
   @Column({
-    length: 50,
     select: false,
+    length: 200,
   })
   password: string;
 
