@@ -91,13 +91,15 @@ export class ProviderTwoClient {
       discountValue,
     } = product;
 
+    const priceWithDiscount = price - price * discountValue;
+
     const newProduct: ProductDto = {
       name,
       image: gallery[0],
       description,
       hasDiscount,
       discountValue,
-      price: price * discountValue,
+      price: hasDiscount ? priceWithDiscount : price,
       provider: ProductProvider.Europe,
     };
 
