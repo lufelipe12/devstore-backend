@@ -8,6 +8,7 @@ import { winstonAsyncConfigOptions } from './logger/winston.config';
 import { ProductsModule } from './products/products.module';
 import { CartsModule } from './carts/carts.module';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UsersModule } from './users/users.module';
     ProductsModule,
     CartsModule,
     UsersModule,
+    AuthModule,
   ],
   providers: [
     {
