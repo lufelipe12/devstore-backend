@@ -7,9 +7,10 @@ import {
   HttpStatus,
   Res,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { User } from 'src/database/entities/user.entity';
+import { LoginRequestDoc, UserCreatedResponseDoc } from '../docs';
 
 import { AuthService } from './auth.service';
 import { CookieHttpConfig } from './configs';
@@ -24,6 +25,17 @@ export class AuthController {
   @Post('/login')
   @UseGuards(LocalAuthGuard)
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Login with email and password',
+    description: 'Login with email and password',
+  })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    type: UserCreatedResponseDoc,
+  })
+  @ApiBody({
+    type: LoginRequestDoc,
+  })
   async login(
     @CurrentUser() currentUser: User,
     @Res() res: Response,

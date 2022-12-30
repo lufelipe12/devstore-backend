@@ -19,5 +19,5 @@ export class UserRequestDoc {
     type: 'string',
     description: 'users password',
   })
-  password: boolean;
+  password: string;
 }
