@@ -1,4 +1,4 @@
-import { ProductProvider } from 'src/utils/enums/product-provider.enum';
+import { ProductProvider } from '../../utils';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Cart } from './cart.entity';
 import { Purchase } from './purchase.entity';

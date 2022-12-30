@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ProductProvider } from '../../utils/enums/product-provider.enum';
+import { ProductProvider } from '../../utils';
 
 export class ProductDoc {
   @ApiProperty({

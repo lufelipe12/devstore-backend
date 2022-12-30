@@ -1,4 +1,4 @@
-import { ProductProvider } from '../../utils/enums/product-provider.enum';
+import { ProductProvider } from '../../utils';
 
 export class ProductDto {
   name: string;

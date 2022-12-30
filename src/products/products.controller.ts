@@ -8,7 +8,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { VarParsers } from '../utils/parsers';
+import { VarParsers } from '../utils';
 import { FindAllPaginatedDoc } from './docs/findAllPaginatedResponse.doc';
 import { ProductsService } from './products.service';
 
