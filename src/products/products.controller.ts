@@ -16,8 +16,15 @@ export class ProductsController {
   async findAllPaginated(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+    @Query('name') name: string,
+    @Query('hasDiscount') hasDiscount: string,
   ) {
-    return await this.productsService.findAllPaginated(page, limit);
+    return await this.productsService.findAllPaginated(
+      page,
+      limit,
+      name,
+      hasDiscount,
+    );
   }
 
   @Get(':id')
