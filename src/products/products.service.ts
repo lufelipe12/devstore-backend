@@ -24,14 +24,23 @@ export class ProductsService {
   async findAllPaginated(
     page: number,
     limit: number,
+    name: string,
+    hasDiscount: string,
   ): Promise<FindAllPaginatedDto> {
     try {
       const clientOneProducts = await this.clientOne.getProducts();
       const clientTwoProducts = await this.clientTwo.getProducts();
-      const products: ProductDto[] = [
-        ...clientOneProducts,
-        ...clientTwoProducts,
-      ];
+      let products: ProductDto[] = [...clientOneProducts, ...clientTwoProducts];
+
+      if (name) {
+        products = products.filter((product) => product.name.includes(name));
+      }
+
+      if (hasDiscount) {
+        products = products.filter(
+          (product) => product.hasDiscount.toString() === hasDiscount,
+        );
+      }
 
       const productsPaginated = products.slice(
         (page - 1) * limit,
