@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ProductProvider } from '../../utils/enums/product-provider.enum';
 
 export class ProductDoc {
   @ApiProperty({
@@ -42,4 +43,11 @@ export class ProductDoc {
     description: 'Products discount',
   })
   discountValue: number;
+
+  @ApiProperty({
+    type: 'enum',
+    example: ProductProvider.Brazil,
+    description: 'Product provider',
+  })
+  provider: ProductProvider;
 }
