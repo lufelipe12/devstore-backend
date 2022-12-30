@@ -45,6 +45,7 @@ export class ProviderOneClient {
       image: imagem,
       description: descricao,
       hasDiscount: false,
+      discountValue: null,
       price: preco,
     };
 
@@ -93,7 +94,8 @@ export class ProviderTwoClient {
       image: gallery[0],
       description,
       hasDiscount,
-      price,
+      discountValue,
+      price: price * discountValue,
     };
 
     return newProduct;
