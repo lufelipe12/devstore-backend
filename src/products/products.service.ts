@@ -8,6 +8,8 @@ import {
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 import { ProviderOneClient, ProviderTwoClient } from '../utils/resources';
+import { FindAllPaginatedDto } from './dto/findAllPaginated.dto';
+import { ProductDto } from './dto/product.dto';
 
 @Injectable()
 export class ProductsService {
@@ -19,11 +21,31 @@ export class ProductsService {
     private clientTwo: ProviderTwoClient,
   ) {}
 
-  async findAll(page: number, limit: number) {
+  async findAllPaginated(
+    page: number,
+    limit: number,
+  ): Promise<FindAllPaginatedDto> {
     try {
-      const products = await this.clientOne.getProducts();
+      const clientOneProducts = await this.clientOne.getProducts();
+      const clientTwoProducts = await this.clientTwo.getProducts();
+      const products: ProductDto[] = [
+        ...clientOneProducts,
+        ...clientTwoProducts,
+      ];
 
-      return products;
+      const productsPaginated = products.slice(
+        (page - 1) * limit,
+        page * limit,
+      );
+
+      const totalPages = Math.round(products.length / limit);
+
+      return {
+        count: productsPaginated.length,
+        page,
+        totalPages,
+        products: productsPaginated,
+      };
     } catch (error) {
       this.logger.error(error);
       throw new HttpException(
