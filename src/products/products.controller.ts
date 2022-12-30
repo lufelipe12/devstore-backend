@@ -26,7 +26,7 @@ export class ProductsController {
     return await this.productsService.findAllPaginated(
       page,
       limit,
-      name.toLowerCase(),
+      name && name.toLowerCase(),
       hasDiscount === null
         ? null
         : this.varParser.parseStringToBoolean(hasDiscount),
