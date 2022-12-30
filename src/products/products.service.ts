@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
-import { ProviderOneClient, ProviderTwoClient } from '../utils/resources';
+import { ProviderOneClient, ProviderTwoClient } from '../utils';
 import { FindAllPaginatedDto } from './dto/findAllPaginated.dto';
 import { ProductDto } from './dto/product.dto';
 

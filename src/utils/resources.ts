@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-import { ProductDto } from 'src/products/dto/product.dto';
+import { ProductDto } from '../products/dto/product.dto';
 import { ClientOneProductDto } from './dtos/clientOneProduct.dto';
 import { ClientTwoProductDto } from './dtos/clientTwoProduct.dto';
+import { ProductProvider } from './enums/product-provider.enum';
 
 export class ProviderOneClient {
   constructor(
@@ -47,6 +48,7 @@ export class ProviderOneClient {
       hasDiscount: false,
       discountValue: null,
       price: preco,
+      provider: ProductProvider.Brazil,
     };
 
     return newProduct;
@@ -89,13 +91,16 @@ export class ProviderTwoClient {
       discountValue,
     } = product;
 
+    const priceWithDiscount = price - price * discountValue;
+
     const newProduct: ProductDto = {
       name,
       image: gallery[0],
       description,
       hasDiscount,
       discountValue,
-      price: price * discountValue,
+      price: hasDiscount ? priceWithDiscount : price,
+      provider: ProductProvider.Europe,
     };
 
     return newProduct;

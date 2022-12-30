@@ -1,3 +1,5 @@
+import { ProductProvider } from '../../utils';
+
 export class ProductDto {
   name: string;
   image: string;
@@ -5,4 +7,5 @@ export class ProductDto {
   price: number;
   hasDiscount: boolean;
   discountValue: number | null;
+  provider: ProductProvider;
 }
