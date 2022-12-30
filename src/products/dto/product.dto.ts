@@ -4,4 +4,5 @@ export class ProductDto {
   description: string;
   price: number;
   hasDiscount: boolean;
+  discountValue: number | null;
 }
