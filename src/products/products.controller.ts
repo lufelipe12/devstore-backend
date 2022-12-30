@@ -6,11 +6,15 @@ import {
   ParseIntPipe,
   DefaultValuePipe,
 } from '@nestjs/common';
+import { VarParsers } from '../utils/parsers';
 import { ProductsService } from './products.service';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(
+    private readonly productsService: ProductsService,
+    private varParser: VarParsers,
+  ) {}
 
   @Get()
   async findAllPaginated(
@@ -22,8 +26,10 @@ export class ProductsController {
     return await this.productsService.findAllPaginated(
       page,
       limit,
-      name,
-      hasDiscount,
+      name.toLowerCase(),
+      hasDiscount === null
+        ? null
+        : this.varParser.parseStringToBoolean(hasDiscount),
     );
   }
 
