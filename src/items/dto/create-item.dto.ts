@@ -28,7 +28,4 @@ export class CreateItemDto {
 
   @IsNumber()
   cartId: number;
-
-  @IsNumber()
-  purchaseId: number;
 }
