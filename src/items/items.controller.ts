@@ -15,8 +15,8 @@ export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @Post()
-  create(@Body() createItemDto: CreateItemDto) {
-    return this.itemsService.create(createItemDto);
+  async create(@Body() createItemDto: CreateItemDto) {
+    return await this.itemsService.create(createItemDto);
   }
 
   // @Get()
