@@ -14,10 +14,6 @@ export class Cart {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => User)
-  @JoinColumn()
-  user: User;
-
   @OneToMany(() => Item, (item) => item.cart)
   items: Item[];
 }

@@ -1,5 +1,3 @@
-import { CreateCartDto } from './dto/create-cart.dto';
-
 import {
   HttpException,
   HttpStatus,
@@ -22,13 +20,9 @@ export class CartsService {
     @InjectRepository(Cart)
     private readonly cartsRepository: Repository<Cart>,
   ) {}
-  async create(createCartDto: CreateCartDto) {
+  async create() {
     try {
-      const { userId } = createCartDto;
-
-      const newCart = this.cartsRepository.create({
-        user: { id: userId },
-      });
+      const newCart = this.cartsRepository.create();
 
       await this.cartsRepository.save(newCart);
 

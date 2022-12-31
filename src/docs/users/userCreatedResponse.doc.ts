@@ -21,11 +21,4 @@ export class UserCreatedResponseDoc {
     description: 'user email',
   })
   email: string;
-
-  @ApiProperty({
-    type: 'boolean',
-    example: false,
-    description: 'if user is admin or not',
-  })
-  isAdmin: boolean;
 }

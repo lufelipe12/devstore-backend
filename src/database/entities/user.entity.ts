@@ -4,11 +4,14 @@ import {
   Column,
   Entity,
   Index,
+  JoinColumn,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Purchase } from './purchase.entity';
+import { Cart } from './cart.entity';
 
 @Entity('users')
 export class User {
@@ -27,7 +30,10 @@ export class User {
   })
   email: string;
 
-  @Column({ default: false })
+  @Column({
+    default: false,
+    select: false,
+  })
   isAdmin: boolean;
 
   @Column({
@@ -35,6 +41,10 @@ export class User {
     length: 200,
   })
   password: string;
+
+  @OneToOne(() => Cart)
+  @JoinColumn()
+  cart: Cart;
 
   @OneToMany(() => Purchase, (purchase) => purchase.user)
   purchases: Purchase[];
