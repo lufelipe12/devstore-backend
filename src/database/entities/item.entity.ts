@@ -9,6 +9,11 @@ export class Item {
   id: number;
 
   @Column({
+    length: 50,
+  })
+  name: string;
+
+  @Column({
     type: 'decimal',
   })
   price: number;

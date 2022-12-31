@@ -1,40 +1,32 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ProductProvider } from '../../utils';
 
-export class ItemEntityDoc {
+export class ItemDeletedResponseDoc {
   @ApiProperty({
-    type: Number,
-    example: 1,
-  })
-  id: number;
-
-  @ApiProperty({
-    type: String,
-    example: 'Example Name',
+    type: 'string',
+    example: 'Sword',
+    description: 'item name',
   })
   name: string;
 
   @ApiProperty({
-    type: Number,
-    example: 10.0,
+    type: 'number',
+    example: 1000,
+    description: 'item price',
   })
-  price: number;
+  price: string;
 
   @ApiProperty({
     type: 'enum',
     example: ProductProvider.Brazil,
+    description: 'item provider',
   })
   provider: ProductProvider;
 
   @ApiProperty({
-    type: Boolean,
+    type: 'boolean',
     example: false,
+    description: 'if item is on sale or not',
   })
   hasDiscount: boolean;
-
-  @ApiProperty({
-    type: Number,
-    example: 1,
-  })
-  cartId: number;
 }
