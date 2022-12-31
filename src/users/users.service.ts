@@ -35,10 +35,13 @@ export class UsersService {
         throw new ConflictException('An user with this email already exists.');
       }
 
-      const newUser = this.usersRepository.create(createUserDto);
-      await this.usersRepository.save(newUser);
+      const { id } = await this.cartsService.create();
 
-      await this.cartsService.create({ userId: newUser.id });
+      const newUser = this.usersRepository.create({
+        ...createUserDto,
+        cart: { id },
+      });
+      await this.usersRepository.save(newUser);
 
       return await this.findOne(newUser.id);
     } catch (error) {
@@ -68,7 +71,9 @@ export class UsersService {
 
   async findAll() {
     try {
-      const users = await this.usersRepository.find();
+      const users = await this.usersRepository.find({
+        relations: ['cart', 'cart.items', 'purchases', 'purchases.items'],
+      });
 
       return users;
     } catch (error) {
@@ -85,7 +90,7 @@ export class UsersService {
     try {
       const user = await this.usersRepository.findOne({
         where: { id },
-        relations: ['purchases', 'purchases.items'],
+        relations: ['cart', 'cart.items', 'purchases', 'purchases.items'],
       });
 
       if (!user) {

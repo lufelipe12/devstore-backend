@@ -44,7 +44,7 @@ export class User {
 
   @OneToOne(() => Cart)
   @JoinColumn()
-  user: User;
+  cart: Cart;
 
   @OneToMany(() => Purchase, (purchase) => purchase.user)
   purchases: Purchase[];
