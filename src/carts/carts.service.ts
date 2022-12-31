@@ -36,9 +36,27 @@ export class CartsService {
     } catch (error) {
       this.logger.error(error);
 
-      if (error instanceof NotFoundException) {
-        throw error;
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  async findOne(id: number) {
+    try {
+      const cart = await this.cartsRepository.findOne({
+        where: { id },
+        relations: ['items'],
+      });
+
+      if (!cart) {
+        throw new NotFoundException('Cart not found.');
       }
+
+      return cart;
+    } catch (error) {
+      this.logger.error(error);
 
       throw new HttpException(
         error.message,

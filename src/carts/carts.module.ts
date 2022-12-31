@@ -7,5 +7,6 @@ import { CartsService } from './carts.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Cart])],
   providers: [CartsService],
+  exports: [CartsService],
 })
 export class CartsModule {}
