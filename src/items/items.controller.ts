@@ -30,7 +30,7 @@ export class ItemsController {
   // }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.itemsService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.itemsService.removeFromCart(+id);
   }
 }
