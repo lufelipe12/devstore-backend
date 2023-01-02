@@ -23,6 +23,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserCreatedResponseDoc, UserRequestDoc } from '../docs';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../auth/decorators';
+import { User } from '../database/entities/user.entity';
 
 @ApiTags('users')
 @Controller('users')
@@ -61,6 +63,22 @@ export class UsersController {
   })
   async findAll() {
     return await this.usersService.findAll();
+  }
+
+  @Get('profile')
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @ApiCookieAuth()
+  @ApiOperation({
+    summary: 'Find an users profile.',
+    description: 'Find an users profile.',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    type: UserCreatedResponseDoc,
+  })
+  async profile(@CurrentUser() currentUser: User) {
+    return await this.usersService.findOne(+currentUser.id);
   }
 
   @Get(':id')
