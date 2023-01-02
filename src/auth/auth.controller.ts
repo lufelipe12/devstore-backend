@@ -1,7 +1,6 @@
 import {
   Controller,
   Post,
-  Body,
   UseGuards,
   HttpCode,
   HttpStatus,
@@ -9,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
-import { User } from 'src/database/entities/user.entity';
+import { User } from '../database/entities/user.entity';
 import { LoginRequestDoc, UserCreatedResponseDoc } from '../docs';
 
 import { AuthService } from './auth.service';

@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Cart } from 'src/database/entities/cart.entity';
+import { Cart } from '../database/entities/cart.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
