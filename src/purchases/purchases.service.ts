@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePurchaseDto } from './dto/create-purchase.dto';
-import { UpdatePurchaseDto } from './dto/update-purchase.dto';
 
 @Injectable()
 export class PurchasesService {
@@ -14,9 +13,5 @@ export class PurchasesService {
 
   findOne(id: number) {
     return `This action returns a #${id} purchase`;
-  }
-
-  update(id: number, updatePurchaseDto: UpdatePurchaseDto) {
-    return `This action updates a #${id} purchase`;
   }
 }
