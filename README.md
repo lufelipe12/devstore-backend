@@ -61,6 +61,20 @@ I used trello as a guide for my tasks. There I still left the DER of the applica
 
 Link: https://trello.com/b/EFzWyQ2t/devstore-backend
 
+## Documentation
+
+Link:
+
+## Technologies
+
+- TypeScript 
+- Nest.js 
+- TypeORM
+- JWT
+- Swagger
+- Docker
+- Postgresql 
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
