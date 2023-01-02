@@ -61,6 +61,10 @@ I used trello as a guide for my tasks. There I still left the DER of the applica
 
 Link: https://trello.com/b/EFzWyQ2t/devstore-backend
 
+## Insomia for endpoints
+
+Link: https://drive.google.com/file/d/13i7Cny4FT52n1hJtpKwZRZavdHKBZFVc/view?usp=sharing
+
 ## Documentation
 
 Link:
