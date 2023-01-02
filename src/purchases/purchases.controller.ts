@@ -17,7 +17,7 @@ import { PurchasesService } from './purchases.service';
 import { CurrentUser } from '../auth/decorators';
 import { User } from '../database/entities/user.entity';
 import { JwtAuthGuard } from '../auth/guards';
-import { PurchaseCreatedDoc } from '../docs';
+import { CompletePurchaseInfos, PurchaseCreatedDoc } from '../docs';
 
 @ApiTags('purchases')
 @Controller('purchases')
@@ -51,7 +51,7 @@ export class PurchasesController {
   @ApiResponse({
     status: HttpStatus.OK,
     isArray: true,
-    type: PurchaseCreatedDoc,
+    type: CompletePurchaseInfos,
   })
   async findAll(@CurrentUser() currentUser: User) {
     await this.purchasesService.verifyAdmin(currentUser.id);
