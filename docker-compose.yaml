@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.4-alpine
+    ports:
+      - '5433:5433'
+    networks:
+      - devstore-net
+    restart: always
+    volumes:
+      - ./:/devstore
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: user
+      POSTGRES_DB: devstore
+    command: -p 5433
+  redis:
+    image: redis:7.0.2-alpine
+    networks:
+      - devstore-net
+    restart: always
+  api:
+    image: devstore-api
+    build:
+      dockerfile: ./src/Dockerfile
+      context: .
+      target: dev
+    networks:
+      - devstore-net
+    volumes:
+      - .:/devstore/app
+      - /devstore/app/node_modules
+    ports:
+      - '3001:3001'
+    restart: always
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+    command: yarn start:dev app
+networks:
+  devstore-net:
+    driver: bridge
