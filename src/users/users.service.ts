@@ -108,6 +108,22 @@ export class UsersService {
     }
   }
 
+  async getUsersCart(userId: number) {
+    try {
+      const user = await this.findOne(userId);
+      const cart = await this.cartsService.findOne(user.cart.id);
+
+      return cart;
+    } catch (error) {
+      this.logger.error(error);
+
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }

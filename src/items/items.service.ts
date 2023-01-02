@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   HttpException,
   HttpStatus,
@@ -57,6 +58,7 @@ export class ItemsService {
     try {
       const item = await this.itemsRepository.findOne({
         where: { id },
+        relations: ['purchase'],
       });
 
       if (!item) {
@@ -84,6 +86,40 @@ export class ItemsService {
       }
 
       return item;
+    } catch (error) {
+      this.logger.error(error);
+
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  async purchaseItems(cartId: number, purchaseId: number) {
+    try {
+      const items = await this.itemsRepository.find({
+        where: { cart: { id: cartId } },
+        relations: ['cart', 'purchase'],
+      });
+
+      if (!items.length) {
+        throw new BadRequestException('You dont have items on cart.');
+      }
+
+      const itemsPurchased = items.map((item) => {
+        const newItem = {
+          ...item,
+          cart: { id: null },
+          purchase: { id: purchaseId },
+        };
+
+        return this.itemsRepository.create(newItem);
+      });
+
+      await this.itemsRepository.save(itemsPurchased);
+
+      return itemsPurchased;
     } catch (error) {
       this.logger.error(error);
 
