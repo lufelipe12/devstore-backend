@@ -55,7 +55,7 @@ $ yarn start:prod
 $ docker-compose up --build -d
 ```
 
-##Trello
+## Trello
 
 I used trello as a guide for my tasks. There I still left the DER of the application.
 
