@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { CartEntityDoc, PurchaseEntityDoc } from '../entities';
 
 export class UserCreatedResponseDoc {
   @ApiProperty({
@@ -21,4 +22,15 @@ export class UserCreatedResponseDoc {
     description: 'user email',
   })
   email: string;
+
+  @ApiProperty({
+    description: 'users cart',
+  })
+  cart: CartEntityDoc;
+
+  @ApiProperty({
+    description: 'users purchases',
+    isArray: true,
+  })
+  purchases: PurchaseEntityDoc;
 }

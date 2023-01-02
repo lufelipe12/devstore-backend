@@ -8,8 +8,8 @@ export class CartEntityDoc {
   id: number;
 
   @ApiProperty({
-    type: Number,
-    example: 1,
+    example: '2020-01-01T00:00:00.000Z',
+    description: 'Cart createdAt',
   })
-  userId: number;
+  createdAt: Date;
 }

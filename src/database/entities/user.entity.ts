@@ -2,6 +2,7 @@ import { InternalServerErrorException } from '@nestjs/common';
 import {
   BeforeInsert,
   Column,
+  CreateDateColumn,
   Entity,
   Index,
   JoinColumn,
@@ -48,6 +49,9 @@ export class User {
 
   @OneToMany(() => Purchase, (purchase) => purchase.user)
   purchases: Purchase[];
+
+  @CreateDateColumn()
+  createdAt: Date;
 
   @BeforeInsert()
   public async setPassword(password: string): Promise<void> {

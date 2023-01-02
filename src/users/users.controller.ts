@@ -3,9 +3,7 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
-  Delete,
   HttpCode,
   HttpStatus,
   UseGuards,
@@ -20,7 +18,6 @@ import {
 
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { UserCreatedResponseDoc, UserRequestDoc } from '../docs';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../auth/decorators';
@@ -34,8 +31,8 @@ export class UsersController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
-    summary: 'Create new user.',
-    description: 'Create new user.',
+    summary: 'Create a new user.',
+    description: 'Create a new user.',
   })
   @ApiResponse({
     status: HttpStatus.CREATED,
@@ -53,8 +50,8 @@ export class UsersController {
   @HttpCode(HttpStatus.OK)
   @ApiCookieAuth()
   @ApiOperation({
-    summary: 'Find all users.',
-    description: 'Find all users.',
+    summary: 'Find all users (ADMIN).',
+    description: 'Find all users (ADMIN).',
   })
   @ApiResponse({
     status: HttpStatus.OK,
@@ -71,8 +68,8 @@ export class UsersController {
   @HttpCode(HttpStatus.OK)
   @ApiCookieAuth()
   @ApiOperation({
-    summary: 'Find an users profile.',
-    description: 'Find an users profile.',
+    summary: 'Find users profile.',
+    description: 'Find users logged profile.',
   })
   @ApiResponse({
     status: HttpStatus.OK,
@@ -87,8 +84,8 @@ export class UsersController {
   @HttpCode(HttpStatus.OK)
   @ApiCookieAuth()
   @ApiOperation({
-    summary: 'Find an user by id.',
-    description: 'Find an user by id.',
+    summary: 'Find an user by id (ADMIN).',
+    description: 'Find an user by id (ADMIN).',
   })
   @ApiResponse({
     status: HttpStatus.OK,
@@ -97,19 +94,5 @@ export class UsersController {
   async findOne(@Param('id') id: string, @CurrentUser() currentUser: User) {
     await this.usersService.isAdmin(currentUser.id);
     return await this.usersService.findOne(+id);
-  }
-
-  @Patch(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiCookieAuth()
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
-  }
-
-  @Delete(':id')
-  @UseGuards(JwtAuthGuard)
-  @ApiCookieAuth()
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
   }
 }

@@ -1,16 +1,20 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   HttpStatus,
   HttpCode,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiCookieAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
@@ -28,9 +32,11 @@ export class ItemsController {
   @Post()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
+  @ApiCookieAuth()
   @ApiOperation({
     summary: 'Create new item.',
-    description: 'Create new item, based on providers.',
+    description:
+      'Create new item, based on providers and users cart. A product became an item when its been added to cart.',
   })
   @ApiResponse({
     status: HttpStatus.CREATED,
@@ -46,22 +52,13 @@ export class ItemsController {
     return await this.itemsService.create(createItemDto, currentUser);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.itemsService.findAll();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.itemsService.findOne(+id);
-  // }
-
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
+  @ApiCookieAuth()
   @HttpCode(HttpStatus.ACCEPTED)
   @ApiOperation({
     summary: 'Delete an item.',
-    description: 'Delete an item, based on id.',
+    description: 'Delete an item, based on id and users cart.',
   })
   @ApiResponse({
     status: HttpStatus.ACCEPTED,

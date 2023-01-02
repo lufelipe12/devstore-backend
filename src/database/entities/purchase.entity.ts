@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
@@ -23,4 +24,7 @@ export class Purchase {
 
   @ManyToOne(() => User, (user) => user.purchases)
   user: User;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

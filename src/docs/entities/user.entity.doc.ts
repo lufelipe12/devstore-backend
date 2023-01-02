@@ -24,4 +24,10 @@ export class UserEntityDoc {
     example: false,
   })
   isAdmin: boolean;
+
+  @ApiProperty({
+    example: '2020-01-01T00:00:00.000Z',
+    description: 'User createdAt',
+  })
+  createdAt: Date;
 }
