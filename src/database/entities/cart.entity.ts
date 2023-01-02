@@ -1,4 +1,5 @@
 import {
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
@@ -16,4 +17,7 @@ export class Cart {
 
   @OneToMany(() => Item, (item) => item.cart)
   items: Item[];
+
+  @CreateDateColumn()
+  createdAt: Date;
 }
