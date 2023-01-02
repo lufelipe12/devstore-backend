@@ -37,10 +37,4 @@ export class ItemEntityDoc {
     example: 1,
   })
   cartId: number;
-
-  @ApiProperty({
-    example: '2020-01-01T00:00:00.000Z',
-    description: 'Item createdAt',
-  })
-  createdAt: Date;
 }
