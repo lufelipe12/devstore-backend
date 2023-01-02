@@ -36,7 +36,7 @@ $ cp .env.example .env
 and set them.
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
