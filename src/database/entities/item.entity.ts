@@ -38,7 +38,4 @@ export class Item {
 
   @ManyToOne(() => Purchase, (purchase) => purchase.items, { nullable: true })
   purchase: Purchase;
-
-  @CreateDateColumn()
-  createdAt: Date;
 }
