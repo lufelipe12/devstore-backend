@@ -121,4 +121,17 @@ export class PurchasesService {
       );
     }
   }
+
+  async verifyAdmin(userId: number) {
+    try {
+      await this.usersService.isAdmin(userId);
+    } catch (error) {
+      this.logger.error(error);
+
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
 }

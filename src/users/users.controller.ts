@@ -61,7 +61,8 @@ export class UsersController {
     isArray: true,
     type: UserCreatedResponseDoc,
   })
-  async findAll() {
+  async findAll(@CurrentUser() currentUser: User) {
+    await this.usersService.isAdmin(currentUser.id);
     return await this.usersService.findAll();
   }
 
@@ -93,7 +94,8 @@ export class UsersController {
     status: HttpStatus.OK,
     type: UserCreatedResponseDoc,
   })
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string, @CurrentUser() currentUser: User) {
+    await this.usersService.isAdmin(currentUser.id);
     return await this.usersService.findOne(+id);
   }
 

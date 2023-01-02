@@ -25,7 +25,4 @@ export class CreateItemDto {
   @IsBoolean()
   @IsNotEmpty()
   hasDiscount: boolean;
-
-  @IsNumber()
-  cartId: number;
 }

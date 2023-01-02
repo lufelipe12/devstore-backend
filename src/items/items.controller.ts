@@ -8,6 +8,7 @@ import {
   Delete,
   HttpStatus,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
@@ -15,6 +16,9 @@ import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { ItemCreatedResponseDoc, ItemRequestDoc } from '../docs';
 import { ItemDeletedResponseDoc } from '../docs';
+import { CurrentUser } from '../auth/decorators';
+import { User } from '../database/entities/user.entity';
+import { JwtAuthGuard } from '../auth/guards';
 
 @ApiTags('items')
 @Controller('items')
@@ -22,6 +26,7 @@ export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
     summary: 'Create new item.',
@@ -34,8 +39,11 @@ export class ItemsController {
   @ApiBody({
     type: ItemRequestDoc,
   })
-  async create(@Body() createItemDto: CreateItemDto) {
-    return await this.itemsService.create(createItemDto);
+  async create(
+    @Body() createItemDto: CreateItemDto,
+    @CurrentUser() currentUser: User,
+  ) {
+    return await this.itemsService.create(createItemDto, currentUser);
   }
 
   // @Get()
@@ -49,6 +57,7 @@ export class ItemsController {
   // }
 
   @Delete(':id')
+  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.ACCEPTED)
   @ApiOperation({
     summary: 'Delete an item.',
@@ -58,7 +67,7 @@ export class ItemsController {
     status: HttpStatus.ACCEPTED,
     type: ItemDeletedResponseDoc,
   })
-  async remove(@Param('id') id: string) {
-    return await this.itemsService.removeFromCart(+id);
+  async remove(@Param('id') id: string, @CurrentUser() currentUser: User) {
+    return await this.itemsService.removeFromCart(+id, currentUser);
   }
 }

@@ -13,8 +13,9 @@ import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { Repository } from 'typeorm';
 
 import { Item } from '../database/entities/item.entity';
-import { CartsService } from '../carts/carts.service';
 import { CreateItemDto } from './dto/create-item.dto';
+import { User } from '../database/entities/user.entity';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class ItemsService {
@@ -25,17 +26,16 @@ export class ItemsService {
     @InjectRepository(Item)
     private readonly itemsRepository: Repository<Item>,
 
-    private readonly cartsService: CartsService,
+    private readonly usersService: UsersService,
   ) {}
 
-  async create(createItemDto: CreateItemDto) {
+  async create(createItemDto: CreateItemDto, currentUser: User) {
     try {
-      const { cartId } = createItemDto;
-      await this.cartsService.findOne(cartId);
+      const { cart } = await this.usersService.findOne(currentUser.id);
 
       const newItem = this.itemsRepository.create({
         ...createItemDto,
-        cart: { id: cartId },
+        cart: { id: cart.id },
       });
       await this.itemsRepository.save(newItem);
 
@@ -76,8 +76,16 @@ export class ItemsService {
     }
   }
 
-  async removeFromCart(id: number) {
+  async removeFromCart(id: number, currentUser: User) {
     try {
+      const { cart } = await this.usersService.findOne(currentUser.id);
+      console.log(cart);
+      const itemInCart = cart.items.find((item) => item.id === id);
+
+      if (!itemInCart) {
+        throw new NotFoundException('This item is not in your cart.');
+      }
+
       const item = await this.findOne(id);
       await this.itemsRepository.remove(item);
 

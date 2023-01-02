@@ -6,6 +6,7 @@ import {
   Injectable,
   LoggerService,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
@@ -76,6 +77,30 @@ export class UsersService {
       });
 
       return users;
+    } catch (error) {
+      this.logger.error(error);
+
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
+  async isAdmin(userId: number) {
+    try {
+      const { isAdmin } = await this.usersRepository.findOne({
+        where: { id: userId },
+        select: ['isAdmin'],
+      });
+
+      if (!isAdmin) {
+        throw new UnauthorizedException(
+          'You dont have sufficient permissions.',
+        );
+      }
+
+      return isAdmin;
     } catch (error) {
       this.logger.error(error);
 

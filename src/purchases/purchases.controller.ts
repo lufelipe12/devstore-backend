@@ -19,7 +19,8 @@ export class PurchasesController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  async findAll() {
+  async findAll(@CurrentUser() currentUser: User) {
+    await this.purchasesService.verifyAdmin(currentUser.id);
     return await this.purchasesService.findAll();
   }
 }
