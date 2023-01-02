@@ -29,11 +29,4 @@ export class ItemRequestDoc {
     description: 'if item is on sale or not',
   })
   hasDiscount: boolean;
-
-  @ApiProperty({
-    type: 'number',
-    example: 1,
-    description: 'carts id for item',
-  })
-  cartId: number;
 }

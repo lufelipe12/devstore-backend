@@ -79,7 +79,6 @@ export class ItemsService {
   async removeFromCart(id: number, currentUser: User) {
     try {
       const { cart } = await this.usersService.findOne(currentUser.id);
-      console.log(cart);
       const itemInCart = cart.items.find((item) => item.id === id);
 
       if (!itemInCart) {

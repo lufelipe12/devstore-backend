@@ -36,4 +36,11 @@ export class ItemCreatedResponseDoc {
     description: 'if item is on sale or not',
   })
   hasDiscount: boolean;
+
+  @ApiProperty({
+    type: 'number',
+    example: null,
+    description: 'purchase id',
+  })
+  purchaseId: number;
 }

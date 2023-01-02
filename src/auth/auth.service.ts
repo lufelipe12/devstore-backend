@@ -75,7 +75,7 @@ export class AuthService {
       });
 
       if (!user) {
-        throw new UnauthorizedException(`User not found`);
+        throw new UnauthorizedException(`Credentials are not valid.`);
       }
 
       const passwordIsValid = await bcrypt.compare(

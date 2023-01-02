@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { ApiCookieAuth, ApiTags } from '@nestjs/swagger';
 
 import { PurchasesService } from './purchases.service';
 import { CurrentUser } from '../auth/decorators';
@@ -13,12 +13,14 @@ export class PurchasesController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
+  @ApiCookieAuth()
   async create(@CurrentUser() currentUser: User) {
     return await this.purchasesService.create(currentUser);
   }
 
   @Get()
   @UseGuards(JwtAuthGuard)
+  @ApiCookieAuth()
   async findAll(@CurrentUser() currentUser: User) {
     await this.purchasesService.verifyAdmin(currentUser.id);
     return await this.purchasesService.findAll();
