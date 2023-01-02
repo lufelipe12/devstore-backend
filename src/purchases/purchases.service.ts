@@ -19,8 +19,4 @@ export class PurchasesService {
   update(id: number, updatePurchaseDto: UpdatePurchaseDto) {
     return `This action updates a #${id} purchase`;
   }
-
-  remove(id: number) {
-    return `This action removes a #${id} purchase`;
-  }
 }
