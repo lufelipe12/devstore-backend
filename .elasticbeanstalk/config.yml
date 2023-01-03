@@ -1,6 +1,6 @@
 branch-defaults:
   main:
-    environment: prod
+    environment: production
     group_suffix: null
 global:
   application_name: devstore-backend
