@@ -35,6 +35,7 @@ This repository was made to devnology fullstack test.
 - Swagger
 - Docker
 - Postgresql 
+- Railway for deploy
 
 ## Installation
 
@@ -73,7 +74,7 @@ Link: https://trello.com/b/EFzWyQ2t/devstore-backend
 
 ## Documentation
 
-Link:
+Link: https://devstore-backend-production.up.railway.app/api/v1/docs
 
 ## Insomia yaml for endpoints testing
 
