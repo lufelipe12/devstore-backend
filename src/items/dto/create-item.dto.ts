@@ -14,6 +14,11 @@ export class CreateItemDto {
   @Length(5, 50)
   name: string;
 
+  @IsString()
+  @IsNotEmpty()
+  @Length(5, 300)
+  img: string;
+
   @IsNumber()
   @IsNotEmpty()
   price: number;

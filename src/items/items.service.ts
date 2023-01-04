@@ -50,10 +50,6 @@ export class ItemsService {
     }
   }
 
-  findAll() {
-    return `This action returns all items`;
-  }
-
   async findOne(id: number) {
     try {
       const item = await this.itemsRepository.findOne({
