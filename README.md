@@ -16,6 +16,7 @@ This repository was made for devnology fullstack test. Here's an API for user re
 ## Project Structure
 
 Projects DER:
+
 ![Screenshot from 2023-01-04 11-11-18](https://user-images.githubusercontent.com/90461911/210573868-908937bc-e555-46b8-8d9c-8bb481d6fdeb.png)
 
 ## Installation
