@@ -65,6 +65,9 @@ $ yarn start:prod
 # run with docker
 $ docker-compose up --build -d
 ```
+## Deployment URL:
+
+Link: https://devstore-backend-production.up.railway.app/api/v1/
 
 ## Trello
 
