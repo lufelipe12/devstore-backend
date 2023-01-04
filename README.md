@@ -43,7 +43,7 @@ $ docker-compose up --build -d
 ```
 ## Deployment URL:
 
-Link: https://devstore-backend-production.up.railway.app/api/v1/
+Link: https://devstore-backend-production.up.railway.app/api/v1/docs
 
 ## Documentation
 
