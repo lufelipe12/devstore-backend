@@ -76,9 +76,9 @@ Link: https://trello.com/b/EFzWyQ2t/devstore-backend
 
 Link: https://devstore-backend-production.up.railway.app/api/v1/docs
 
-## Insomia yaml for endpoints testing
+## Insomia json for endpoints testing
 
-Link: https://drive.google.com/file/d/13i7Cny4FT52n1hJtpKwZRZavdHKBZFVc/view?usp=sharing
+Link: https://drive.google.com/file/d/1DfKcf2I1SKgC8hfGdsRABfC0UJ7iZHE0/view?usp=sharing
 
 ## Support
 
