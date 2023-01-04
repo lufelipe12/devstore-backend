@@ -8,9 +8,9 @@ import {
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
+
 import { User } from '../database/entities/user.entity';
 import { LoginRequestDoc, UserCreatedResponseDoc } from '../docs';
-
 import { AuthService } from './auth.service';
 import { CookieHttpConfig } from './configs';
 import { CurrentUser } from './decorators';

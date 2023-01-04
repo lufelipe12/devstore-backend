@@ -51,19 +51,6 @@ export class JWTService {
     }
   }
 
-  async getVolatileToken(tokenPayload: any, expires?: string): Promise<string> {
-    try {
-      const token: string = await this.jwtService.signAsync(tokenPayload, {
-        expiresIn:
-          expires || this.configService.get<number>('JWT_EXPIRATION') * 0.1,
-      });
-
-      return `Bearer ${token}`;
-    } catch (error) {
-      throw new UnprocessableEntityException(error.message);
-    }
-  }
-
   async refreshToken(
     cookieName: string,
     request: Request,

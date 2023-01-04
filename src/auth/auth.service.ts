@@ -13,7 +13,6 @@ import { ConfigService } from '@nestjs/config';
 import { Repository } from 'typeorm';
 
 import { User } from '../database/entities/user.entity';
-import { LoginDto } from './dto/login.dto';
 import { AuthTokenPayload } from './interfaces';
 import { JWTService } from '../jwt/jwt.service';
 import { UsersService } from '../users/users.service';

@@ -6,6 +6,7 @@ import {
   IsString,
   Length,
 } from 'class-validator';
+
 import { ProductProvider } from '../../utils';
 
 export class CreateItemDto {

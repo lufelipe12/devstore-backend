@@ -4,7 +4,6 @@ import {
 } from 'nest-winston';
 import * as winston from 'winston';
 import 'winston-mongodb';
-
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 export const winstonAsyncConfigOptions = {

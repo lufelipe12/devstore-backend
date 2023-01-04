@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+
 import { ProductProvider } from '../../utils';
 
 export class ItemEntityDoc {
