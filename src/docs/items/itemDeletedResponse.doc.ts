@@ -10,6 +10,14 @@ export class ItemDeletedResponseDoc {
   name: string;
 
   @ApiProperty({
+    type: 'string',
+    example:
+      'https://static.wikia.nocookie.net/new-world2651/images/6/6b/Obelisk_Guard_Longsword_Infobox.png/revision/latest?cb=20210911112925',
+    description: 'item image',
+  })
+  img: string;
+
+  @ApiProperty({
     type: 'number',
     example: 1000,
     description: 'item price',
