@@ -15,7 +15,7 @@ This repository was made for devnology fullstack test. Here's an API for user re
 
 ## Installation
 
-Create your own env file:
+Create your [env file](.env.example):
 
 ```bash
 $ cp .env.example .env
