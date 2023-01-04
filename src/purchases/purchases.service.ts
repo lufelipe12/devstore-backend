@@ -37,7 +37,7 @@ export class PurchasesService {
 
       const usersCart = await this.usersService.getUsersCart(id);
 
-      if (!usersCart.items) {
+      if (usersCart.items.length == 0) {
         throw new BadRequestException('You dont have items in cart.');
       }
 
