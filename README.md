@@ -43,12 +43,12 @@ $ docker-compose up --build -d
 ```
 ## Deployment URL:
 
-Link: https://devstore-backend-production.up.railway.app/api/v1/docs
+For the deployment, the [railway](https://railway.app/) platform was used as an infrastructure provider.
 
 ## Documentation
 
 In this project I used trello to guide my tasks and insomnia to test the endpoints. Here are the links to the documentation,
-for trello and insomnia JSON if you want to test the routes. There are baseUrl options for local testing and productionUrl for production.
+for trello and insomnia JSON if you want to test the routes. There are `baseUrl` options for local testing and `productionUrl` for production.
 
 - [Swagger](https://devstore-backend-production.up.railway.app/api/v1/docs)
 - [Trello](https://trello.com/b/EFzWyQ2t/devstore-backend)
