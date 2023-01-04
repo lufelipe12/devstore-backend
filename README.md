@@ -1,30 +1,6 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-This repository was made to devnology fullstack test.
+This repository was made for devnology fullstack test. Here's an API for user registration, login, shopping, and consuming another API to show available products.
 
 ## Technologies
 
@@ -35,10 +11,17 @@ This repository was made to devnology fullstack test.
 - Swagger
 - Docker
 - Postgresql 
+- Railway for deploy
+
+## Project Structure
+
+Projects DER:
+
+![Screenshot from 2023-01-04 11-11-18](https://user-images.githubusercontent.com/90461911/210573868-908937bc-e555-46b8-8d9c-8bb481d6fdeb.png)
 
 ## Installation
 
-Create your own env file:
+Create your [env file](.env.example):
 
 ```bash
 $ cp .env.example .env
@@ -64,30 +47,19 @@ $ yarn start:prod
 # run with docker
 $ docker-compose up --build -d
 ```
+## Deployment URL:
 
-## Trello
-
-I used trello as a guide for my tasks. There I still left the DER of the application.
-
-Link: https://trello.com/b/EFzWyQ2t/devstore-backend
+For the deployment, the [railway](https://railway.app/) platform was used as an infrastructure provider.
 
 ## Documentation
 
-Link:
+In this project I used trello to guide my tasks and insomnia to test the endpoints. Here are the links to the documentation,
+for trello and insomnia JSON if you want to test the routes. There are `baseUrl` options for local testing and `productionUrl` for production.
 
-## Insomia yaml for endpoints testing
+- [Swagger](https://devstore-backend-production.up.railway.app/api/v1/docs)
+- [Trello](https://trello.com/b/EFzWyQ2t/devstore-backend)
+- [Insomia](https://drive.google.com/file/d/1DfKcf2I1SKgC8hfGdsRABfC0UJ7iZHE0/view?usp=sharing)
 
-Link: https://drive.google.com/file/d/13i7Cny4FT52n1hJtpKwZRZavdHKBZFVc/view?usp=sharing
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
