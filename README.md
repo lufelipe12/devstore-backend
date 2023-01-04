@@ -45,19 +45,15 @@ $ docker-compose up --build -d
 
 Link: https://devstore-backend-production.up.railway.app/api/v1/
 
-## Trello
-
-I used trello as a guide for my tasks. There I still left the DER of the application.
-
-[Trello](https://trello.com/b/EFzWyQ2t/devstore-backend)
-
 ## Documentation
 
-[Documentation](https://devstore-backend-production.up.railway.app/api/v1/docs)
+In this project I used trello to guide my tasks and insomnia to test the endpoints. Here are the links to the documentation,
+for trello and insomnia JSON if you want to test the routes. There are baseUrl options for local testing and productionUrl for production.
 
-## Insomia json for endpoints testing
+-[Documentation](https://devstore-backend-production.up.railway.app/api/v1/docs)
+-[Trello](https://trello.com/b/EFzWyQ2t/devstore-backend)
+-[Insomia](https://drive.google.com/file/d/1DfKcf2I1SKgC8hfGdsRABfC0UJ7iZHE0/view?usp=sharing)
 
-[Insomia](https://drive.google.com/file/d/1DfKcf2I1SKgC8hfGdsRABfC0UJ7iZHE0/view?usp=sharing)
 
 ## License
 
