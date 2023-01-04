@@ -49,15 +49,15 @@ Link: https://devstore-backend-production.up.railway.app/api/v1/
 
 I used trello as a guide for my tasks. There I still left the DER of the application.
 
-[Trello]: (https://trello.com/b/EFzWyQ2t/devstore-backend)
+[Trello](https://trello.com/b/EFzWyQ2t/devstore-backend)
 
 ## Documentation
 
-[Documentation]: (https://devstore-backend-production.up.railway.app/api/v1/docs)
+[Documentation](https://devstore-backend-production.up.railway.app/api/v1/docs)
 
 ## Insomia json for endpoints testing
 
-[Insomia]: (https://drive.google.com/file/d/1DfKcf2I1SKgC8hfGdsRABfC0UJ7iZHE0/view?usp=sharing)
+[Insomia](https://drive.google.com/file/d/1DfKcf2I1SKgC8hfGdsRABfC0UJ7iZHE0/view?usp=sharing)
 
 ## License
 
