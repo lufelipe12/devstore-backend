@@ -20,6 +20,11 @@ export class Item {
   name: string;
 
   @Column({
+    length: 300,
+  })
+  img: string;
+
+  @Column({
     type: 'decimal',
   })
   price: number;
