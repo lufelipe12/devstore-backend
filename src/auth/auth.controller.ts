@@ -6,7 +6,13 @@ import {
   HttpStatus,
   Res,
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiCookieAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Response } from 'express';
 
 import { User } from '../database/entities/user.entity';
@@ -14,7 +20,7 @@ import { LoginRequestDoc, UserCreatedResponseDoc } from '../docs';
 import { AuthService } from './auth.service';
 import { CookieHttpConfig } from './configs';
 import { CurrentUser } from './decorators';
-import { LocalAuthGuard } from './guards';
+import { JwtAuthGuard, LocalAuthGuard } from './guards';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -45,5 +51,26 @@ export class AuthController {
       .cookie('Authorization', token, CookieHttpConfig.Options())
       .status(HttpStatus.OK)
       .json(user);
+  }
+
+  @Post('/logout')
+  @UseGuards(JwtAuthGuard)
+  @ApiCookieAuth()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Logout user.',
+    description: 'Logout user.',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+  })
+  async logout(
+    @CurrentUser() currentUser: User,
+    @Res() res: Response,
+  ): Promise<void> {
+    res
+      .clearCookie('Authorization')
+      .status(HttpStatus.OK)
+      .json({ success: 'ok' });
   }
 }
