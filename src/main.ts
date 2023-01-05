@@ -18,7 +18,10 @@ async function bootstrap() {
   );
   app.enableCors({
     credentials: true,
-    origin: ['http://localhost:5173'],
+    origin: [
+      'http://localhost:5173',
+      'https://devstore-frontend-lufelipe12.vercel.app',
+    ],
   });
   app.use(cookieParser());
 
