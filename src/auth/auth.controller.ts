@@ -42,8 +42,8 @@ export class AuthController {
     const { token, user } = await this.authService.login(currentUser);
 
     res
-      .status(HttpStatus.OK)
       .cookie('Authorization', token, CookieHttpConfig.Options())
+      .status(HttpStatus.OK)
       .json(user);
   }
 }
